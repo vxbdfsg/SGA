@@ -1,0 +1,222 @@
+https://docs.unrealengine.com/5.2/en-US/quick-start-guide-for-blueprints-visual-scripting-in-unreal-engine/
+
+This quick start guide will walk you through building an Actor in the level with different Components, 
+이 퀵 가이드는 현재 레벨의 액터를 여러가지 다른 요소들을 사용해서 빌드할 수 있게 한다
+then turning it into a Blueprint Class you can add launching behavior to so your Character will fly around the level! 
+그리고 이를 블루프린터 클래스를 이용해서 캐릭터가 움직일 수 있게 한다.
+Making it into a Blueprint Class also means you can create as many launchpads in your world as you want, just by dragging into the level from the Content Browser.
+이를 블루프린터 클래스로 만드는것은 단순히 컨텐츠 브라우저에서 레벨을 선택하는 것 만으로 너의 월드에서 너가 원하는 만큼의 launchpad를 만들 수 있게 한다
+1 - Required Project Setup
+From the New Project tab of the Unreal Project Browser, create a new project from the Games category that uses the following settings:
+언리얼의 새 프로젝트 텝에서 새로운 프로잭트를 생성한다. 다음의 세팅을 포함해서.
+Side Scroller
+Blueprint
+With Starter Content
+
+Choose whatever scalability and quality settings work best for your setup.
+당신이 원하는 퀄리티나 크기로 새팅을 선택하세요.
+If you are unsure of what settings are right for you, you can find more information in the Project Settings section.
+어떤 세팅이 당신에게 적합한지 모르면 프로잭트세팅 색션에서 더 많은 정보를 찾을 수 있습니다.
+Name your project, then create it by clicking the Create Project button.
+이름을 짓고 버튼을 눌러 프로젝트를 생성하세요
+You should now be ready to jump into and start adding to the side-scroller level that appears.
+준비가 완료되었습니다.
+
+2 - Construct your Launchpad
+In the Level Editor, you will build a launchpad, then convert it to a Blueprint Class so you can add your gameplay behavior to it.
+레벨에디터에서 런치패드를 만들고 이를 블루프린터클래스로 변환하여 레벨에 추가할 수 있도록 합니다.
+First, move around in the viewport until you are looking at the top platforms in the level.
+먼저 카메라를 이동하여 플랫폼의 최상단부분을 보도록 하십시오.
+We are going to create the container to hold all the parts of our launchpad by using the Empty Actor. 
+The two parts (or Components) you will need are a shape to represent the launchpad, and a trigger for when the character overlaps it.
+우리는 빈 액터를 이용해서 우리의 모든 런치패드를 포함하는 컨테이너를 만들 것입니다.
+필요한 두가지는 런치패드를 표현할 수 있는 shape와 케릭터가 오버렙될때의 트리거 입니다.
+In the Main Toolbar, press the Modes button, and from the dropdown click on Select to display the Place Actors panel.
+메인 툴바에서 Modes버튼을 누르고, 액터가 포함된 화면을 선택하기 위해 드롭다운을 하세요.
+In the Place Actors panel, click on Basic, then find the Empty Actor.
+빈 액터를 찾기위해서 Basic에서 찾아서 선택하십시오.
+Drag it into the level so that it is sitting on one of the top platforms.
+이를 래밸에 드래그 해서 제일 위 플랫폼에 올려두십시오.
+Now that you have the Actor selected in the level, its properties are visible in the Details panel. At the top of the Details panel, you can rename it. 
+Go ahead and click in the box to enter a new name, like LaunchPad.
+레벨에서 액터가 선택된 채로, 이는 패널에서 보이도록 설정되어 있습니다. 디테일패널의 윗부분에서 이름을 바꿀 수 있습니다. 런치패드와 같은 이름으로 새로 설정해보세요.
+In the Details panel, click the Add Component button, then select Cube under Common.
+패널에서 컴포넌트 추가 버튼을 눌러서 큐브를 선택하세요.
+Click and drag the newly added Cube to the DefaultSceneRoot to make the Cube the new root.
+클릭하고 새로 추가된 큐브를 드래그해서 새로운 root를 만드세요.
+With the Cube component selected, change the Scale to (X: 1.0, Y: 1.0, Z: 0.1)
+선택된 큐브컴포넌트에서 크기를 변경해 주세요
+Now, we will add a Box Collision Component, which will fire off an event whenever something overlaps it. 
+이제 우리는 박스콜리전 컴퍼넌트를 추가해서, 물체가 겹치면 발사하는 이벤트를 만들 것 입니다.
+In the Details panel, click the Add Component button, then (under Collision) select Box Collision.
+패널에서 컴포넌트 추가 버튼을 눌러서 Box Collision을 선택하세요.
+Change the Box Collision scale to ( X: 1.25, Y: 1.25, Z: 9.75) and location to ( X: 0, Y: 0, Z: 200) so the box covers and extends above the launch pad.
+충돌범위를 변경하고 위치도 변경해서 박스가 런치패드 위로 확장될 수 있게 해주세요
+If at any time you need to change your Actor's properties, you can click on LaunchPad (Instance), found in the Details panel, under the Add Components button.
+언제든 액터의 설정을 변경해야한다면 런치패드를 선택해서 디테일 패널에서 컴포넌트 추가버튼을 선택하세요.
+Now that you have your Actor the way you want it, we will turn it into a Blueprint Class. 
+이제 당신이 원하는 액터를 만들었습니다. 그리고 우리는 이를 블루프린터 클래스로 변환할 것입니다.
+You can add more components inside the Blueprint Editor, and tweak them just like you can in the Level.
+블루프린터 에디터에 더 많은 요소를 추가할 수 있습니다. 그리고 우리는 이를 레벨에 다양한 모습으로 추가할 수 있습니다.
+3 - Convert Your Actor to a Blueprint Class
+When you make changes inside the Blueprint, each time you make a new launchpad in the Level, it will have the look and feel that you have created in the Blueprint Editor. 
+당신이 블루프린터에서 변경한 사항이 있을 때, 새로운 런치패드를 만드는 등, 당신이 블루프린터 에디터를 만들었다는 것을 알 것입니다.
+While you could simply duplicate your LaunchPad Actor around the level, any changes you make on a particular launchpad would only affect that one copy.
+당신이 레벨에서 단순히 런치패드를 복제한다면, 당신이 런치패드를 변경 한 사항은 그 하나에만 영향을 미칩니다.
+In the Details panel, click on the Blueprint/Add Script button.
+디테일 패널에서 블루프린트스크립트 추가버튼을 누르세요.
+The Create Blueprint from Selection dialog box appears. We are going to edit the default path of the Blueprint.
+ Create Blueprint from Selection 대화상자거 보일것이고 우리는 디폴트로 생성 할 것입니다.
+Change the path from Game/SideScrollerBP to Game/SideScrollerBP/Blueprints.
+
+At this point, you could rename your Blueprint, or leave it as the default LaunchPad_Blueprint.
+
+Click on Create Blueprint.
+
+Your Blueprint is now visible in the Content Browser. Right now, you could drag and drop from the Content Browser into the level to create lots of copies of your platform mesh and trigger, but there will not be any behavior on it yet. In the next step, you will start setting up the graph nodes inside of your Blueprint to launch your Character when it crosses the launchpad.
+
+BPQS_3_FinalResult.png
+
+4 - Create Your Starting Point
+To start adding behavior to your Blueprint Class, you will need to open it in the Blueprint Editor.
+
+Double-click the Blueprint Class in the Content Browser.
+
+The Blueprint Editor will open, and you can see your Cube and Box components in a viewport. At this point, if you adjust the Box Component's placement, it will be applied to all launchpads you make from this Blueprint Class. Just like when you were working with components on your LaunchPad Actor, you can select the Box component in the Components list and adjust the location. Try a location of (X: 0, Y: 0, Z: 350).
+
+BPQS_4_Step2.png
+
+Docked next to the Viewport tab is a Construction Script tab and an Event Graph tab. Since you are going to be creating gameplay behavior, you should start with the Event Graph. Click on that tab now.
+
+EventGraphStart.png
+
+Events are the starting point of your Blueprint graph's execution, and can be associated with a number of different gameplay situations. A selection of the most commonly used events are visible right away, seen as translucent Event nodes. Though certainly useful for many of your Blueprint graphs, we will be making one of our very own.
+
+We want an event that will execute when anything overlaps our Box component. First, select the Box component in the Components tab.
+
+Right-click in an empty spot in your graph to bring up the context menu of nodes you could add to the graph.
+
+To move around in the graph, right-click and drag around. At this point, you could drag the graph to the left, moving the pre-placed event nodes off the left side of the screen and creating more blank space to create your launchpad logic in.
+
+RightClickContext.png
+
+We are adding an event for this Component, so expand the Add Event for Box dropdown, and then Collision. You could also use the search box, using "Component Begin Overlap" to filter the menu.
+
+Select On Component Begin Overlap.
+
+BPQS_4_Step7.png
+
+Your graph now has an OnComponentBeginOverlap node. Any nodes connected to this event will execute when something overlaps the Box component of your launchpad.
+
+EventNode.png
+
+In the next step of this guide, you will begin connecting nodes to the output pins of this node, and learn more about working with nodes in Blueprints.
+
+5 - Test the Overlapping Actor
+Right now, that OnComponentBeginOverlap event will execute when anything overlaps the Box trigger. We only want to actually execute our launching behavior, though, if the overlapping thing is our avatar, or Pawn. Think of it as asking "Is the Actor overlapping the Box trigger the same Actor as our Pawn?"
+
+We will do that by working with the Other Actor output from the OnComponentBeginOverlap event.
+
+From the OnComponentBeginOverlap event, click on the Other Actor pin , drag into an empty spot on the graph, and release to display the context menu.
+
+OtherActorContext.png
+
+The context menu is adaptive, filtering by the pin you are currently working with to show you only nodes that are compatible.
+
+Type = into the search box to filter the available nodes, then select Equal (Object).
+
+BPQS_5_Step2.png
+
+We could set Side Scroller Character as the other input to the Equal node, but then if we changed the Character we were using, we would need to re-open this Blueprint and manually update that. Instead, let's get a reference to the current Pawn we are using.
+
+Right-click in an empty part of the graph to bring up the context menu.
+
+Type Player Pawn in the menu's search box, then (under Game) select Get Player Pawn.
+
+GetPlayerPawnMenu.png
+
+Connect the Return Value output on Get Player Pawn to the second input on the Equal node.
+
+BPQS_5_Step5.png
+
+Now that we have got a node that will tell us if the Other Actor is the Pawn our player controls, we will use the answer to change the execution flow of our graph. That is, we will direct the execution flow as it leaves the On Component Begin Overlap node. For that, we want to use a Flow Control node, specifically the Branch node.
+
+Drag off of the execution pin on the OnComponentBeginOverlap node and release in an empty part of the graph.
+
+BPQS_5_Step6.png
+
+Type Branch in the search, then select Branch from the context menu.
+
+BPQS_5_Step7.png
+
+Connect the output pin of the Equals node to the input Boolean pin on the Condition node.
+
+BPQS_5_Step8.png
+
+The graph is now ready for you to set up different behavior to execute depending on whether the overlapping Actor is your Pawn or not. In the next step, we will do just that, and set up Blueprint nodes to launch our Character if the result of the Equals comparison is True.
+
+6 - Launch Your Character
+Our launchpad is going to work by using a function called Launch Character. The Launch Character function adds the velocity you specify to the Character's current velocity, allowing you to throw it in whichever direction you would like. It only works on Characters, though, so we need to make sure that our Pawn (avatar) is a Character (humanoid avatar).
+
+We do this by casting. Casting attempts to convert your input into a different type, so you can access specific functionality that is only allowed for that particular type. It will succeed if your input is based on that type.
+
+Everything you can place in your level is an Actor, in addition to any other specialized behavior added on later. That means that you can get a reference to anything in your level, cast it to Actor, and it will succeed. However, not everything in your level is the Pawn representing you in the game, so casting something to Pawn may or may not succeed.
+
+From the Get Player Pawn node, drag off of the Return Value pin.
+
+Begin typing Cast to Character in the search field of the context menu to find the node of the same name.
+
+CasttoCharacterMenu.png
+
+From the Cast to Character node, drag off of the As Character pin.
+
+Type "Launch" into the search box, then select Launch Character in the context menu.
+
+BPQS_6_Step4.png
+
+Click image for full size.
+
+Notice that the output execution pin for successfully casting automatically connected to the input execution pin of Launch Character.
+
+Type 3000 into the Z field of the Launch Character node.
+
+Finally, connect the Branch node True execution pin to the Cast to Character node's input execution pin, so that Cast to Character and Launch Character only occur if the overlapping Actor is our Pawn.
+
+BPQS_6_Step6.png
+
+Click image for full size.
+
+At this point, Compile and Save the Blueprint using the toolbar buttons, then close the Blueprint Editor.
+
+Drag several of the launchpads into your Level from the Content Browser.
+
+BPQS_6_Step7.png
+
+Click on Play in the toolbar, then run around the Level (using WASD) and jump (using the Spacebar). Land on one of the platforms and watch as you go flying through the air!
+
+
+7 - On Your Own!
+Using what you have learned over the course of this Quick Start guide, try to do the following:
+
+Play a sound when your Character is launched using an Audio Component.
+
+Create a variable to store your Launch Velocity, and expose it so you can set it on each copy in the level.
+
+Add a
+
+[Particle System Component](understanding-the-basics/components/rendering-components#particlesystemcomponent) to your Blueprint and use one of the Particle Systems from the Starter Content.
+Add an Arrow Component and use its rotation to define the direction to launch the character.
+
+Using Timelines, add some animation to the Box Mesh to represent it launching the character.
+
+For more information on Blueprint Visual Scripting, see the Blueprints page.
+
+As for specifics covered in this quick start:
+
+For a quick overview of different types of Blueprint Classes you can make, see Blueprints Getting Started
+
+For more information on Blueprint Classes, see: Blueprint Classes
+
+For more short tutorials on creating and working with Blueprint Classes, see: Blueprints How-To
+
+For more information on the Blueprint Editor, see: Blueprint Editor

@@ -67,30 +67,33 @@ In the Details panel, click on the Blueprint/Add Script button.
 디테일 패널에서 블루프린트스크립트 추가버튼을 누르세요.
 The Create Blueprint from Selection dialog box appears. We are going to edit the default path of the Blueprint.
  Create Blueprint from Selection 대화상자거 보일것이고 우리는 디폴트로 생성 할 것입니다.
+
+-----------------------23/8/10----------------------
 Change the path from Game/SideScrollerBP to Game/SideScrollerBP/Blueprints.
-
+슬라이드 스크롤 BP의 내부에 블루프린트 파일을 만들어서 이동.
 At this point, you could rename your Blueprint, or leave it as the default LaunchPad_Blueprint.
-
+이 지점에서 블루프린트의 이름을 바꾸거나 그대로 둘 수 있음.
 Click on Create Blueprint.
-
-Your Blueprint is now visible in the Content Browser. Right now, you could drag and drop from the Content Browser into the level to create lots of copies of your platform mesh and trigger, but there will not be any behavior on it yet. In the next step, you will start setting up the graph nodes inside of your Blueprint to launch your Character when it crosses the launchpad.
-
-BPQS_3_FinalResult.png
-
+블루프린트 생성을 누르면
+Your Blueprint is now visible in the Content Browser. 
+컨텐츠 브라우저 화면에 보일것이다
+Right now, you could drag and drop from the Content Browser into the level to create lots of copies of your platform mesh and trigger, but there will not be any behavior on it yet. 
+In the next step, you will start setting up the graph nodes inside of your Blueprint to launch your Character when it crosses the launchpad.
+이제, 컨텐츠 브라우저에서 드래그 앤 드랍으로 여러 다양한 플랫폼이나 트리거의 복사본을 만들 수 있다. 다만 아직 아무것도 없을것이다.
+다음단계에서 블루프린트 내에서 그래프로 노드를 만들어서 캐릭터를 움직이게 할 것이다.
 4 - Create Your Starting Point
 To start adding behavior to your Blueprint Class, you will need to open it in the Blueprint Editor.
-
+블루프린트클래스를 추가하기 위해서 먼저 에디터를 연다.
 Double-click the Blueprint Class in the Content Browser.
-
-The Blueprint Editor will open, and you can see your Cube and Box components in a viewport. At this point, if you adjust the Box Component's placement, it will be applied to all launchpads you make from this Blueprint Class. Just like when you were working with components on your LaunchPad Actor, you can select the Box component in the Components list and adjust the location. Try a location of (X: 0, Y: 0, Z: 350).
-
-BPQS_4_Step2.png
-
+컨텐츠 브라우저에서 더블클릭을 한다.
+The Blueprint Editor will open, and you can see your Cube and Box components in a viewport. At this point, if you adjust the Box Component's placement, it will be applied to all launchpads you make from this Blueprint Class. 
+에디터가 열릴것이고 큐브와 박스 컴포넌트가 보일것이다. 이 시점에서 박스컴포넌트의 위치를 조정하면 이는 이 블루프린트를 이용하는 모든것에서 적용이 될 것이다.
+Just like when you were working with components on your LaunchPad Actor, you can select the Box component in the Components list and adjust the location. Try a location of (X: 0, Y: 0, Z: 350).
+액터에서 컴포넌트로 수정할 때 처럼, 박스 콤포넌트의 리스트로 위치를 변경 할 수 있다. 0,0,350으로 위치를 조정해봐라
 Docked next to the Viewport tab is a Construction Script tab and an Event Graph tab. Since you are going to be creating gameplay behavior, you should start with the Event Graph. Click on that tab now.
-
-EventGraphStart.png
-
-Events are the starting point of your Blueprint graph's execution, and can be associated with a number of different gameplay situations. A selection of the most commonly used events are visible right away, seen as translucent Event nodes. Though certainly useful for many of your Blueprint graphs, we will be making one of our very own.
+뷰포트 옆에 붙은 탭은 컨스트럭션스크립트 탭과 이벤트 그래프 탭이다. 이벤트 그래프로 움직임을 만들 수 있다.
+Events are the starting point of your Blueprint graph's execution, and can be associated with a number of different gameplay situations. 
+A selection of the most commonly used events are visible right away, seen as translucent Event nodes. Though certainly useful for many of your Blueprint graphs, we will be making one of our very own.
 
 We want an event that will execute when anything overlaps our Box component. First, select the Box component in the Components tab.
 
